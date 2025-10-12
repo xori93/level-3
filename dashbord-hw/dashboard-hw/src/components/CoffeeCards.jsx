@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const CoffeeCards = () => {
+
+  const [data, setData] = useState([]);
+
+  
   useEffect(() => {
     const fetchRecipes = async () => {
       const options = {
@@ -15,7 +19,7 @@ const CoffeeCards = () => {
 
       try {
         const response = await axios.request(options);
-        console.log(response.data);
+        setData(response.data);
       } catch (error) {
         console.error("Error fetching recipes:", error);
       }
@@ -24,7 +28,25 @@ const CoffeeCards = () => {
     fetchRecipes();
   }, []);
 
-  return <div>CoffeeCards</div>;
+  return (
+  <div className="flex flex-row flex-wrap p-8 gap-8 justify-center">
+    {
+      data.map((item, index) => {
+        return (
+          <div key={index} className="flex flex-col items-center p-6 w-[300px] gap-4 bg-white border rounded-xl shadow-lg">
+            <h3 className="text-xl font-semibold">
+              {item.name}
+            </h3>
+    
+            <img className="w-80 h-60 object-cover rounded" src={item.image} alt={item.name}/>
+            <p className="text-sm text-gray-700 text-center">{item.description}</p>
+            <p className="font-semibold text-green-700">{item.category}</p>
+          </div>
+        )
+      })
+    }
+  </div>
+  );
 };
 
 export default CoffeeCards;
