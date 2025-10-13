@@ -24,13 +24,13 @@ const Header = ({category, setCategory}) => {
         <option className='text-black' value="food">Food</option>
         <option className='text-black' value="food">Cafe-Inspired Recipes</option>
       </select>
-      {/* <input 
+      <input 
         type="text" 
         placeholder='Search for drinks...'
         className='border rounded px-3 py-1 cursor-pointer text-zinc-300'
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        /> */}
+        />
     </div>
   )
 }
