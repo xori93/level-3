@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import axios from "axios";
 
-const CoffeeCards = () => {
+const CoffeeCards = ( { category = "" } ) => {
 
   const [data, setData] = useState([]);
 

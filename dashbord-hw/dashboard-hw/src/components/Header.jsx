@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const Header = () => {
+const Header = ({category, setCategory}) => {
 
-  const [search, setSearch] = useState();
-  const [category, setCategory] = useState();
+  // const [search, setSearch] = useState("");
+  // const [category, setCategory] = useState("");
 
-  // const categoryHandle = 
+  //useMemo helps to remember a function logic, so react, can use it later unless dependencies change
 
   return (
     <div className='flex flex-row justify-between p-8 items-center gap-4'>
@@ -13,7 +13,8 @@ const Header = () => {
       <select 
         name="category"
         className='border rounded px-3 py-1 cursor-pointer text-zinc-300'
-
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
       >
         <option className='text-black' value="">Category</option>
         <option className='text-black' value="hot beverage">Hot Beverage</option>
@@ -23,11 +24,13 @@ const Header = () => {
         <option className='text-black' value="food">Food</option>
         <option className='text-black' value="food">Cafe-Inspired Recipes</option>
       </select>
-      <input 
+      {/* <input 
         type="text" 
         placeholder='Search for drinks...'
         className='border rounded px-3 py-1 cursor-pointer text-zinc-300'
-        />
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        /> */}
     </div>
   )
 }
