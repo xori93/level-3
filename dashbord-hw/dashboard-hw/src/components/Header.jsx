@@ -1,9 +1,8 @@
 import React from 'react'
 
-const Header = ({category, setCategory}) => {
+const Header = ({category, setCategory}, data) => {
 
-  // const [search, setSearch] = useState("");
-  // const [category, setCategory] = useState("");
+  // 
 
   //useMemo helps to remember a function logic, so react, can use it later unless dependencies change
 
@@ -17,18 +16,18 @@ const Header = ({category, setCategory}) => {
         onChange={(e) => setCategory(e.target.value)}
       >
         <option className='text-black' value="">Category</option>
-        <option className='text-black' value="hot beverage">Hot Beverage</option>
-        <option className='text-black' value="iced beverage">Ice Beveage</option>
-        <option className='text-black' value="syrups">Add-Ins</option>
-        <option className='text-black' value="syrups">Syrups</option>
-        <option className='text-black' value="food">Food</option>
-        <option className='text-black' value="food">Cafe-Inspired Recipes</option>
+        <option className='text-black' value="HOT BEVERAGES">Hot Beverage</option>
+        <option className='text-black' value="ICED BEVERAGES">Ice Beveage</option>
+        <option className='text-black' value="ADD-INS">Add-Ins</option>
+        <option className='text-black' value="SYRUPS">Syrups</option>
+        <option className='text-black' value="FOOD">Food</option>
+        <option className='text-black' value="CAFÉ-INSPIRED RECIPES">Cafe-Inspired Recipes</option>
       </select>
       <input 
         type="text" 
         placeholder='Search for drinks...'
         className='border rounded px-3 py-1 cursor-pointer text-zinc-300'
-        value={search}
+        // value={search}
         onChange={(e) => setSearch(e.target.value)}
         />
     </div>
