@@ -9,28 +9,35 @@ import Total from './components/Total'
 
 // App starts 
 function App() {
-  // Check local storage value for existing items from last session
-  const savedCart = localStorage.getItem("newCart");
-  // default cart to empty array
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("newCart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
 
-  // Set your default cart to be the parsed value if there is something before
-  let parsedValue = JSON.parse(savedCart);
-  if (parsedValue)
-    setCart(parsedValue);
-  
-  // Reduce loops over ever Item in the cart
+   // Reduce loops over ever Item in the cart
   const totalAmount = cart.reduce((total, item) => total += item.price, 0 )
-  
-  
-  useEffect(() => {
-    // const savedCart = localStorage.getItem("newCart");
-    // if (savedCart) {
-    //   setCart(JSON.parse(savedCart));
-    // }
 
-    localStorage.setItem("newCart", JSON.stringify(cart));
-  }, [cart]);
+  useEffect(() => {
+    localStorage.setItem("newCart", JSON.stringify(cart))
+    }, [cart])
+
+//   // Check local storage value for existing items from last session
+//   const savedCart = localStorage.getItem("newCart");
+//   // default cart to empty array
+//   const [cart, setCart] = useState([]);
+
+//   // Set your default cart to be the parsed value if there is something before
+//   // let parsedValue = JSON.parse(savedCart);
+//   // if (parsedValue)
+//   //   setCart(parsedValue);
+  
+//  
+  
+  
+//   
+
+//     localStorage.setItem("newCart", JSON.stringify(cart));
+//   }, [cart]);
 
   const shoppingItems = [
     {
